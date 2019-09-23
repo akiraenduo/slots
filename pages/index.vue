@@ -1,10 +1,13 @@
 <template>
-  <v-layout column>
-    <v-flex xs12 sm12 md12>
-      <CalenderWidget />
-      <Events />
-    </v-flex>
-  </v-layout>
+  <div class="content">
+    <v-layout>
+      <v-flex xs12 sm4 md4>
+        <CalenderWidget />
+        <Events />
+      </v-flex>
+      <v-flex xs12 sm8 md8 />
+    </v-layout>
+  </div>
 </template>
 
 <script>
@@ -17,3 +20,9 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+.content {
+  max-width: 1200px;
+  margin: 10px auto;
+}
+</style>

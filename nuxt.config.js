@@ -45,7 +45,37 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    [
+      'nuxt-fire',
+      {
+        // Required:
+        config: {
+          development: {
+            apiKey: 'AIzaSyBYmZ34OW4qhqGeeOOiuBY645Mbm05fu_g',
+            authDomain: 'slots-codilar.firebaseapp.com',
+            databaseURL: 'https://slots-codilar.firebaseio.com',
+            projectId: 'slots-codilar',
+            storageBucket: 'slots-codilar.appspot.com',
+            messagingSenderId: '134357875358',
+            appId: '1:134357875358:web:7b52c770211112c3f3598f'
+          },
+          production: {
+            apiKey: 'AIzaSyBYmZ34OW4qhqGeeOOiuBY645Mbm05fu_g',
+            authDomain: 'slots-codilar.firebaseapp.com',
+            databaseURL: 'https://slots-codilar.firebaseio.com',
+            projectId: 'slots-codilar',
+            storageBucket: 'slots-codilar.appspot.com',
+            messagingSenderId: '134357875358',
+            appId: '1:134357875358:web:7b52c770211112c3f3598f'
+          }
+        },
+        // The following options are optional:
+        useOnly: ['auth', 'firestore'],
+        customEnv: false,
+        functionsLocation: 'us-central'
+      }
+    ]
   ],
   /*
    ** Axios module configuration
@@ -83,9 +113,9 @@ export default {
     extend(config, ctx) {
       if (ctx.isDev && ctx.isClient) {
         config.module.rules.push({
-          enforce: "pre",
+          enforce: 'pre',
           test: /\.(js|vue)$/,
-          loader: "eslint-loader",
+          loader: 'eslint-loader',
           exclude: /(node_modules)/
         })
       }

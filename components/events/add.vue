@@ -1,65 +1,77 @@
 <template>
-  <v-row justify="center">
-    <v-dialog v-model="dialog" persistent max-width="600px">
-      <template v-slot:activator="{ on }">
-        <v-btn color="primary" dark v-on="on">Open Dialog</v-btn>
-      </template>
+  <div class="text-center">
+    <v-dialog v-model="dialog" :persistent="true" width="500">
       <v-card>
-        <v-card-title>
-          <span class="headline">User Profile</span>
+        <v-card-title class="headline grey lighten-2" primary-title>
+          Book your slot
         </v-card-title>
+
         <v-card-text>
-          <v-container>
-            <v-row>
-              <v-col cols="12" sm="6" md="4">
-                <v-text-field label="Legal first name*" required></v-text-field>
-              </v-col>
-              <v-col cols="12" sm="6" md="4">
-                <v-text-field label="Legal middle name" hint="example of helper text only on focus"></v-text-field>
-              </v-col>
-              <v-col cols="12" sm="6" md="4">
-                <v-text-field
-                  label="Legal last name*"
-                  hint="example of persistent helper text"
-                  persistent-hint
-                  required
-                ></v-text-field>
-              </v-col>
-              <v-col cols="12">
-                <v-text-field label="Email*" required></v-text-field>
-              </v-col>
-              <v-col cols="12">
-                <v-text-field label="Password*" type="password" required></v-text-field>
-              </v-col>
-              <v-col cols="12" sm="6">
-                <v-select :items="['0-17', '18-29', '30-54', '54+']" label="Age*" required></v-select>
-              </v-col>
-              <v-col cols="12" sm="6">
-                <v-autocomplete
-                  :items="['Skiing', 'Ice hockey', 'Soccer', 'Basketball', 'Hockey', 'Reading', 'Writing', 'Coding', 'Basejump']"
-                  label="Interests"
-                  multiple
-                ></v-autocomplete>
-              </v-col>
-            </v-row>
-          </v-container>
-          <small>*indicates required field</small>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
         </v-card-text>
+
+        <v-divider />
+
         <v-card-actions>
-          <div class="flex-grow-1"></div>
-          <v-btn color="blue darken-1" text @click="dialog = false">Close</v-btn>
-          <v-btn color="blue darken-1" text @click="dialog = false">Save</v-btn>
+          <div class="flex-grow-1" />
+          <v-btn outlined color="#c7141a" text>
+            Submit
+          </v-btn>
+          <v-btn
+            elevation="0"
+            color="#c7141a"
+            dark
+            @click="
+              () => {
+                this.$nuxt.$emit('close-form')
+              }
+            "
+          >
+            Cancel
+          </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
-  </v-row>
+  </div>
 </template>
 <script>
 export default {
   props: {
-    dialog: {
+    show: {
       type: Boolean,
       default: false
+    }
+  },
+  data() {
+    return {
+      slots: [
+        '09:00AM',
+        '10:00AM',
+        '11:00AM',
+        '12:00PM',
+        '01:00PM',
+        '02:00PM',
+        '03:00PM',
+        '04:00PM',
+        '05:00PM',
+        '06:00PM',
+        '07:00PM',
+        '08:00PM',
+        '09:00PM',
+        '10:00PM',
+        '11:00PM'
+      ]
+    }
+  },
+  computed: {
+    dialog() {
+      return this.show
     }
   }
 }
